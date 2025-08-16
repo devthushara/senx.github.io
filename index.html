@@ -24,11 +24,31 @@
   <!-- Go Medium font -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Go:wght@400;500;600;700&display=swap');
+
+    /* Rimouski Regular font-face (local) */
+    @font-face {
+      font-family: 'Rimouski';
+      src: url('fonts/Rimouski_Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
   </style>
   <!-- Codicon icon set -->
   <link rel="stylesheet" href="https://microsoft.github.io/vscode-codicons/dist/codicon.css" />
-
+ <!-- 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%232563eb'/%3E%3Cpath d='M18 38h28l-6 10H24l-6-10zm3-12h22l-5 8H26l-5-8z' fill='%23fbbf24'/%3E%3C/svg%3E" />
+-->
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="favicon_io/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon_io/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon_io/android-chrome-512x512.png">
+  <link rel="shortcut icon" href="favicon_io/favicon.ico">
+
+
 
   <style>
     :root{
@@ -68,7 +88,11 @@
     .nav{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0}
     .brand{display:flex;align-items:center;gap:.7rem}
     .logo{inline-size:44px;block-size:44px;display:grid;place-items:center;border-radius:12px;background:conic-gradient(from 180deg at 50% 50%, var(--yellow), var(--blue));box-shadow:inset 0 0 0 2px rgba(255,255,255,.5)}
-    .brand h1{font-size:1.05rem;line-height:1.1;margin:0}
+  .brand h1{font-size:1.05rem;line-height:1.1;margin:0;font-family:'Rimouski', 'Go', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';}
+    /* Use Rimouski for all headers */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Rimouski', 'Go', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+    }
     nav ul{display:flex;gap:1.1rem;list-style:none;padding:0;margin:0}
     nav a{padding:.55rem .8rem;border-radius:10px;font-weight:600;color:#1f2a44}
     nav a:hover{background:rgba(37,99,235,.08)}
@@ -99,7 +123,16 @@
     .about{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
     .list{display:grid;gap:.7rem}
     .list li{list-style:none;display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:start;padding:.7rem;border:1px dashed rgba(11,18,32,.08);border-radius:12px}
-    .icon{inline-size:28px;block-size:28px;display:grid;place-items:center;border-radius:8px;background:rgba(37,99,235,.1)}
+    .icon{
+      inline-size:32px;
+      block-size:32px;
+      display:grid;
+      place-items:center;
+      border-radius:8px;
+      background:var(--yellow);
+      color:var(--blue);
+      font-size:1.35rem;
+    }
 
     /* Services */
     .cards{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
@@ -115,9 +148,36 @@
     .stat .label{color:var(--muted)}
 
     /* Testimonials & Logos */
-    .logos{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;align-items:center;opacity:.9}
+  .logos{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;align-items:center;opacity:.9}
+  .logos-carousel-wrap{margin-top:1.2rem;margin-bottom:1.2rem;}
+  .logos-carousel .logo-box{background:#fff;border:1px solid rgba(11,18,32,.08);border-radius:14px;padding:1rem;text-align:center;min-width:140px;min-height:60px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;}
+  .logos-carousel img{display:block;max-height:40px;max-width:120px;margin:auto;}
     .logo-box{background:#fff;border:1px solid rgba(11,18,32,.08);border-radius:14px;padding:1rem;text-align:center}
-    .t-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    /* Testimonials carousel styles */
+    .t-wrap {
+      overflow: hidden;
+      width: 100%;
+      margin: 1.2rem 0;
+      padding: 0;
+    }
+    .t-wrap {
+      display: flex;
+      gap: 2rem;
+      align-items: stretch;
+      will-change: transform;
+    }
+    .testimonial {
+      min-width: 340px;
+      max-width: 400px;
+      flex: 0 0 auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
     .testimonial{background:#fff;border:1px solid rgba(11,18,32,.08);border-radius:18px;padding:1rem}
     .quote{font-style:italic}
 
@@ -254,9 +314,9 @@
     <div class="container nav">
       <a class="brand" href="#top" aria-label="SeneX Holdings home">
         <span class="logo" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="url(#g)"/><defs><radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8 8) rotate(45) scale(18)"><stop stop-color="#fbbf24"/><stop offset="1" stop-color="#2563eb"/></radialGradient></defs></svg>
+          <img src="favicon_io/apple-touch-icon.png" alt="SeneX Holdings logo" width="28" height="28" style="display:block;border-radius:12px;" />
         </span>
-        <h1>SeneX Holdings (PVT) LTD</h1>
+        <h1>SeneX Holdings</h1>
       </a>
       <nav aria-label="Main">
         <ul>
@@ -329,34 +389,40 @@
     <h3 class="section-title">Our Services</h3>
     <p class="section-sub">From concept to commissioning — and beyond.</p>
     <div class="cards" role="list">
-      <article class="card" role="listitem">
-        <span class="chip">Residential</span>
-        <h4>Residential Solar Systems</h4>
+      <article class="card" role="listitem" style="position:relative;">
+        <span class="chip" style="position:absolute;left:1rem;top:1rem;z-index:2;">Residential</span>
+        <span class="codicon codicon-home" style="display:block;font-size:2.2rem;color:var(--blue);margin:2.2rem auto .5rem auto;text-align:center;"></span>
+        <h4 style="text-align:center;margin-top:.2rem;">Residential Solar Systems</h4>
         <p>Premium rooftop solutions tailored to your home and usage profile.</p>
       </article>
-      <article class="card" role="listitem">
-        <span class="chip">Commercial</span>
-        <h4>Commercial Solar Solutions</h4>
+      <article class="card" role="listitem" style="position:relative;">
+        <span class="chip" style="position:absolute;left:1rem;top:1rem;z-index:2;">Commercial</span>
+        <span class="codicon codicon-organization" style="display:block;font-size:2.2rem;color:var(--blue);margin:2.2rem auto .5rem auto;text-align:center;"></span>
+        <h4 style="text-align:center;margin-top:.2rem;">Commercial Solar Solutions</h4>
         <p>Lower operating costs and meet sustainability goals with scalable systems.</p>
       </article>
-      <article class="card" role="listitem">
-        <span class="chip">Industrial</span>
-        <h4>Industrial Installations</h4>
+      <article class="card" role="listitem" style="position:relative;">
+        <span class="chip" style="position:absolute;left:1rem;top:1rem;z-index:2;">Industrial</span>
+        <span class="codicon codicon-server" style="display:block;font-size:2.2rem;color:var(--blue);margin:2.2rem auto .5rem auto;text-align:center;"></span>
+        <h4 style="text-align:center;margin-top:.2rem;">Industrial Installations</h4>
         <p>High‑capacity installations engineered for reliability and uptime.</p>
       </article>
-      <article class="card" role="listitem">
-        <span class="chip">Advisory</span>
-        <h4>Renewable Energy Consulting</h4>
+      <article class="card" role="listitem" style="position:relative;">
+        <span class="chip" style="position:absolute;left:1rem;top:1rem;z-index:2;">Advisory</span>
+        <span class="codicon codicon-lightbulb" style="display:block;font-size:2.2rem;color:var(--blue);margin:2.2rem auto .5rem auto;text-align:center;"></span>
+        <h4 style="text-align:center;margin-top:.2rem;">Renewable Energy Consulting</h4>
         <p>Feasibility, design optimization, compliance, and financing guidance.</p>
       </article>
-      <article class="card" role="listitem">
-        <span class="chip">Microgrids</span>
-        <h4>Microgrid Management</h4>
+      <article class="card" role="listitem" style="position:relative;">
+        <span class="chip" style="position:absolute;left:1rem;top:1rem;z-index:2;">Microgrids</span>
+        <span class="codicon codicon-circuit-board" style="display:block;font-size:2.2rem;color:var(--blue);margin:2.2rem auto .5rem auto;text-align:center;"></span>
+        <h4 style="text-align:center;margin-top:.2rem;">Microgrid Management</h4>
         <p>Hybrid systems with storage for resilience and peak shaving.</p>
       </article>
-      <article class="card" role="listitem">
-        <span class="chip">Support</span>
-        <h4>Maintenance & Support</h4>
+      <article class="card" role="listitem" style="position:relative;">
+        <span class="chip" style="position:absolute;left:1rem;top:1rem;z-index:2;">Support</span>
+        <span class="codicon codicon-tools" style="display:block;font-size:2.2rem;color:var(--blue);margin:2.2rem auto .5rem auto;text-align:center;"></span>
+        <h4 style="text-align:center;margin-top:.2rem;">Maintenance & Support</h4>
         <p>Proactive monitoring, cleaning, and lifecycle servicing.</p>
       </article>
     </div>
@@ -377,24 +443,40 @@
   <!-- Testimonials & Clients -->
   <section class="container reveal">
     <h3 class="section-title">Trusted by Sri Lankans Nationwide</h3>
-    <div class="t-wrap">
-      <figure class="testimonial">
-        <blockquote class="quote">“Professional team and seamless installation. Our bills dropped significantly within the first month.”</blockquote>
-        <figcaption>— Residential Customer, Matara</figcaption>
-      </figure>
-      <figure class="testimonial">
-        <blockquote class="quote">“SeneX engineered a robust solution for our factory with minimal downtime. Excellent ongoing support.”</blockquote>
-        <figcaption>— Industrial Client, Gampaha</figcaption>
-      </figure>
+    <div class="testimonial-carousel-outer" style="overflow:hidden;width:100%;position:relative;">
+  <div class="testimonial-carousel-inner" id="testimonialCarousel" style="display:flex;gap:1.2rem;align-items:stretch;will-change:transform;">
+        <figure class="testimonial">
+          <blockquote class="quote">“Professional team and seamless installation. Our bills dropped significantly within the first month.”</blockquote>
+          <figcaption>— Residential Customer, Matara</figcaption>
+        </figure>
+        <figure class="testimonial">
+          <blockquote class="quote">“SeneX engineered a robust solution for our factory with minimal downtime. Excellent ongoing support.”</blockquote>
+          <figcaption>— Industrial Client, Gampaha</figcaption>
+        </figure>
+        <figure class="testimonial">
+          <blockquote class="quote">“The SeneX team was knowledgeable and friendly. Highly recommended for solar projects!”</blockquote>
+          <figcaption>— Commercial Client, Colombo</figcaption>
+        </figure>
+        <figure class="testimonial">
+          <blockquote class="quote">“Quick installation and great after-sales support. Our system works flawlessly.”</blockquote>
+          <figcaption>— Homeowner, Kandy</figcaption>
+        </figure>
+        <figure class="testimonial">
+          <blockquote class="quote">“Excellent service and transparent pricing. We are very satisfied with the results.”</blockquote>
+          <figcaption>— Business Owner, Galle</figcaption>
+        </figure>
+      </div>
     </div>
-    <div class="logos" aria-label="Client & Partner Logos">
-      <div class="logo-box">Logo A</div>
-      <div class="logo-box">Logo B</div>
-      <div class="logo-box">Logo C</div>
-      <div class="logo-box">Logo D</div>
-      <div class="logo-box">Logo E</div>
-      <div class="logo-box">Logo F</div>
-    </div>
+      <div class="logos-carousel-wrap" style="overflow:hidden;width:100%;position:relative;">
+        <div class="logos-carousel" id="logosCarousel" style="display:flex;gap:2rem;align-items:center;will-change:transform;">
+          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Apple" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png" alt="Google" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Amazon" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Meta" style="height:40px;max-width:120px;"></div>
+        </div>
+      </div>
   </section>
 
   <!-- Calculator -->
@@ -531,9 +613,9 @@
           <p>Premium Solar PV Solutions — Importing, Distributing, Designing & Installing across Sri Lanka.</p>
           <small>Registration: PV 00300000 &nbsp;|&nbsp; SEA: SLSEASBS00914</small>
           <div class="social" style="margin-top:.8rem">
-            <a href="#" aria-label="Facebook">📘 Facebook</a>
-            <a href="#" aria-label="LinkedIn">💼 LinkedIn</a>
-            <a href="#" aria-label="YouTube">▶️ YouTube</a>
+            <a href="#" aria-label="Facebook"><span class="codicon codicon-comment-discussion" style="font-size:1.1em;"></span> Facebook</a>
+            <a href="#" aria-label="LinkedIn"><span class="codicon codicon-organization" style="font-size:1.1em;"></span> LinkedIn</a>
+            <a href="#" aria-label="YouTube"><span class="codicon codicon-play" style="font-size:1.1em;"></span> YouTube</a>
           </div>
         </div>
         <div>
@@ -547,10 +629,10 @@
         </div>
         <div>
           <h5>Contact</h5>
-          <p>📍 No 32/2, Jambugasmulla Rd, Nugegoda</p>
-          <p>📍 No 4, Paramulla Rd, Matara</p>
-          <p>☎️ <a href="tel:+94413127312">041 312 7312</a> &nbsp;|&nbsp; <a href="tel:+94701663146">070 166 3146</a></p>
-          <p>✉️ <a href="mailto:info@senexholdings.com">info@senexholdings.com</a></p>
+          <p><span class="codicon codicon-location" style="font-size:1.1em;"></span> No 32/2, Jambugasmulla Rd, Nugegoda</p>
+          <p><span class="codicon codicon-location" style="font-size:1.1em;"></span> No 4, Paramulla Rd, Matara</p>
+          <p><span class="codicon codicon-call-incoming" style="font-size:1.1em;"></span> <a href="tel:+94413127312">041 312 7312</a> &nbsp;|&nbsp; <a href="tel:+94701663146">070 166 3146</a></p>
+          <p><span class="codicon codicon-mail" style="font-size:1.1em;"></span> <a href="mailto:info@senexholdings.com">info@senexholdings.com</a></p>
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.12);padding:1rem 0">
@@ -595,6 +677,44 @@
 
   <!-- JS: Interactions, Validation, Counters -->
   <script>
+    // Rolling testimonials carousel animation
+      (function(){
+        const carousel = document.getElementById('testimonialCarousel');
+        if(!carousel) return;
+        // Duplicate children for seamless loop
+        carousel.innerHTML += carousel.innerHTML;
+        let pos = 0;
+        const speed = 0.6; // px per frame
+        function animate(){
+          pos -= speed;
+          const totalWidth = carousel.scrollWidth/2;
+          if(Math.abs(pos) > totalWidth){
+            pos = 0;
+          }
+          carousel.style.transform = `translateX(${pos}px)`;
+          requestAnimationFrame(animate);
+        }
+        animate();
+      })();
+    // Logos carousel animation
+    (function(){
+      const carousel = document.getElementById('logosCarousel');
+      if(!carousel) return;
+      // Duplicate children for seamless loop
+      carousel.innerHTML += carousel.innerHTML;
+      let pos = 0;
+      const speed = 0.7; // px per frame
+      function animate(){
+        pos -= speed;
+        const totalWidth = carousel.scrollWidth/2;
+        if(Math.abs(pos) > totalWidth){
+          pos = 0;
+        }
+        carousel.style.transform = `translateX(${pos}px)`;
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
