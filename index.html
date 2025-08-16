@@ -249,6 +249,17 @@
       align-items: flex-start;
       min-width: 0;
     }
+    #calculator .co2-metric {
+      background: #d1fae5 !important;
+      border: 1.5px solid #10b981 !important;
+      color: #166534 !important;
+    }
+    #calculator .co2-metric .title {
+      color: #166534 !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+    }
     #calculator .metric .title {
       font-size: .97rem;
       color: var(--muted);
@@ -554,10 +565,17 @@
           <div class="value" id="roiYears">— years</div>
           <div style="font-size:.8rem;color:#93c5fd">(Capex ÷ yearly savings)</div>
         </div>
-        <div class="metric">
-          <div class="title">CO₂ Offset (Annual)</div>
-          <div class="value" id="co2">— tCO₂</div>
-          <div style="font-size:.8rem;color:#93c5fd">~0.7 kg/kWh avoided</div>
+        <div class="metric co2-metric" id="co2Metric">
+          <div class="title" id="co2Title">
+            <span class="co2-tree" style="display:inline-block;vertical-align:-2px;margin-right:0.4em;width:1.2em;height:1.2em;">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="color:#166534;width:1.2em;height:1.2em;">
+                <path d="M12 2C10.07 2 8.5 3.57 8.5 5.5c0 .41.08.8.21 1.17C6.4 7.09 5 8.97 5 11.14c0 2.21 1.79 4 4 4h1v3H8v2h8v-2h-2v-3h1c2.21 0 4-1.79 4-4 0-2.17-1.4-4.05-3.71-4.47.13-.37.21-.76.21-1.17C15.5 3.57 13.93 2 12 2zm0 2c.83 0 1.5.67 1.5 1.5S12.83 7 12 7s-1.5-.67-1.5-1.5S11.17 4 12 4zm-3 7.14c0-1.31 1.07-2.38 2.38-2.38.41 0 .8.08 1.17.21.37-.13.76-.21 1.17-.21C15.93 8.76 17 9.83 17 11.14c0 1.31-1.07 2.38-2.38 2.38-.41 0-.8-.08-1.17-.21-.37.13-.76.21-1.17.21C9.07 13.52 8 12.45 8 11.14z"/>
+              </svg>
+            </span>
+            CO₂ Offset (Annual)
+          </div>
+          <div class="value" id="co2">— tCO₂ <span id="treesSaved" style="font-size:.95em;color:#059669;font-weight:500;"></span></div>
+          <div style="font-size:.8rem;color:#166534">~0.7 kg/kWh avoided; 1 tree ≈ 21.77 kg CO₂/year</div>
         </div>
       </div>
     </div>
@@ -751,7 +769,7 @@
     solarForm.addEventListener('submit', function(e) {
       e.preventDefault();
       // Inputs
-      const bill = parseFloat(document.getElementById('bill').value.replace(/[,\s]/g, '')) || 0;
+      const bill = parseFloat(document.getElementById('bill').value.replace(/[,]/g, '')) || 0;
       const roof = parseFloat(document.getElementById('roof').value) || 0;
       const city = document.getElementById('city').value;
       const scheme = document.getElementById('scheme').value;
@@ -807,7 +825,19 @@
       const roi = capex && yearly ? (capex / yearly) : 0;
       roiYears.textContent = roi ? roi.toFixed(1) + ' years' : '—';
       // CO2 offset (0.7 kg/kWh)
-      co2.textContent = ((monthlyGen * 12 * 0.7) / 1000).toFixed(2) + ' tCO₂';
+      var co2tons = ((monthlyGen * 12 * 0.7) / 1000);
+      co2.textContent = co2tons.toFixed(2) + ' tCO₂ ';
+      // Trees saved (1 tree ≈ 21.77 kg CO₂/year)
+      var trees = Math.round((co2tons * 1000) / 21.77);
+      var treesSaved = document.getElementById('treesSaved');
+      if (treesSaved) {
+        treesSaved.textContent = '(≈ ' + trees + ' trees)';
+      }
+      // Make CO2 Offset block green (add class)
+      var co2Metric = document.getElementById('co2Metric');
+      if (co2Metric) {
+        co2Metric.classList.add('co2-metric');
+      }
   // Show results
   document.getElementById('calcBanner').style.display = 'none';
   results.style.display = 'grid';
