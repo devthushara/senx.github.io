@@ -113,7 +113,13 @@
       display:grid;
       place-items:center;
       border-radius:16px;
-      box-shadow:inset 0 0 0 2px rgba(255,255,255,.5)
+      box-shadow:inset 0 0 0 2px rgba(255,255,255,.5);
+      transition: inline-size 0.5s, block-size 0.5s, width 0.5s, height 0.5s, transform 0.5s;
+    }
+    @media (max-width: 640px) {
+      .logo {
+        will-change: inline-size, block-size, width, height, transform;
+      }
     }
   .brand h1, .brand-title{
     font-size:1.05rem;
@@ -713,23 +719,38 @@ affordable energy solutions.</p>
 
   <!-- JS: Interactions, Validation, Counters -->
   <script>
-    // Responsive nav-cta show/hide on scroll for mobile
+    // Responsive nav-cta show/hide on scroll for mobile, and animate logo size
     (function(){
       function isMobile() {
         return window.innerWidth <= 640;
       }
       var navCta = document.querySelector('.nav-cta');
       var brandTitle = document.querySelector('.brand-title');
-      var lastScroll = 0;
+      var logo = document.querySelector('.logo');
       function onScroll() {
-        if (!isMobile() || !navCta || !brandTitle) return;
+        if (!isMobile() || !navCta || !brandTitle || !logo) return;
         var y = window.scrollY;
+        // nav-cta and brand-title logic
         if (y < 40) {
           navCta.classList.remove('show');
           brandTitle.classList.remove('hide');
         } else {
           navCta.classList.add('show');
           brandTitle.classList.add('hide');
+        }
+        // Animate logo size: from 60px to 88px as you scroll from 0 to 60px
+        var minSize = 60, maxSize = 88, scrollStart = 0, scrollEnd = 60;
+        var t = Math.min(1, Math.max(0, (y - scrollStart) / (scrollEnd - scrollStart)));
+        var size = minSize + (maxSize - minSize) * t;
+        logo.style.inlineSize = size + 'px';
+        logo.style.blockSize = size + 'px';
+        logo.style.width = size + 'px';
+        logo.style.height = size + 'px';
+        // Optionally, scale up the logo image inside
+        var img = logo.querySelector('img');
+        if (img) {
+          img.style.width = size + 'px';
+          img.style.height = size + 'px';
         }
       }
       window.addEventListener('scroll', onScroll, {passive:true});
