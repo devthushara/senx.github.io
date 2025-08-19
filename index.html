@@ -23,6 +23,26 @@
 
   <!-- Go Medium font -->
   <style>
+    /* Responsive nav-cta: hidden on mobile at top, appears on scroll */
+    @media (max-width: 640px) {
+      .nav-cta {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-24px);
+        transition: opacity 0.5s, transform 0.5s;
+      }
+      .nav-cta.show {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .brand-title {
+        transition: opacity 0.5s;
+      }
+      .brand-title.hide {
+        opacity: 0;
+      }
+    }
     @import url('https://fonts.googleapis.com/css2?family=Go:wght@400;500;600;700&display=swap');
 
     /* Rimouski Regular font-face (local) */
@@ -87,8 +107,49 @@
     header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid rgba(11,18,32,.08)}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0}
     .brand{display:flex;align-items:center;gap:.7rem}
-    .logo{inline-size:44px;block-size:44px;display:grid;place-items:center;border-radius:12px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.5)}
-  .brand h1{font-size:1.05rem;line-height:1.1;margin:0;font-family:'Rimouski', 'Go', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';}
+    .logo{
+      inline-size:60px;
+      block-size:60px;
+      display:grid;
+      place-items:center;
+      border-radius:16px;
+      box-shadow:inset 0 0 0 2px rgba(255,255,255,.5)
+    }
+  .brand h1, .brand-title{
+    font-size:1.05rem;
+    line-height:1.1;
+    margin:0;
+    font-family:'Rimouski', 'Go', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+  }
+  /* Responsive nav-cta: hidden on mobile at top, appears on scroll */
+  @media (max-width: 640px) {
+    .nav-cta {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-24px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .nav-cta.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .brand-title {
+      transition: opacity 0.5s;
+      display: block !important;
+    }
+    @media (max-width: 640px) {
+      .brand-title {
+        font-size: 1.45rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        margin-left: 0.1em;
+      }
+    }
+    .brand-title.hide {
+      opacity: 0;
+    }
+  }
     /* Use Rimouski for all headers */
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Rimouski', 'Go', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
@@ -305,9 +366,9 @@
     <div class="container nav">
       <a class="brand" href="#top" aria-label="SeneX Holdings home">
         <span class="logo" aria-hidden="true">
-          <img src="favicon_io/apple-touch-icon.png" alt="SeneX Holdings logo" width="44" height="44" style="display:block;border-radius:12px;" />
+          <img src="favicon_io/apple-touch-icon.png" alt="SeneX Holdings logo" width="60" height="60" style="display:block;border-radius:16px;width:60px;height:60px;" />
         </span>
-        <h1>SeneX Holdings</h1>
+        <h1 class="brand-title">SeneX Holdings</h1>
       </a>
       <nav aria-label="Main">
         <ul>
@@ -652,6 +713,29 @@ affordable energy solutions.</p>
 
   <!-- JS: Interactions, Validation, Counters -->
   <script>
+    // Responsive nav-cta show/hide on scroll for mobile
+    (function(){
+      function isMobile() {
+        return window.innerWidth <= 640;
+      }
+      var navCta = document.querySelector('.nav-cta');
+      var brandTitle = document.querySelector('.brand-title');
+      var lastScroll = 0;
+      function onScroll() {
+        if (!isMobile() || !navCta || !brandTitle) return;
+        var y = window.scrollY;
+        if (y < 40) {
+          navCta.classList.remove('show');
+          brandTitle.classList.remove('hide');
+        } else {
+          navCta.classList.add('show');
+          brandTitle.classList.add('hide');
+        }
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+      window.addEventListener('resize', onScroll);
+      document.addEventListener('DOMContentLoaded', onScroll);
+    })();
     // Rolling testimonials carousel animation
       (function(){
         const carousel = document.getElementById('testimonialCarousel');
