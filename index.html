@@ -28,13 +28,13 @@
       .nav-cta {
         opacity: 0;
         pointer-events: none;
-        transform: translateY(-24px);
+        transform: translateY(-24px) scale(1);
         transition: opacity 0.5s, transform 0.5s;
       }
       .nav-cta.show {
         opacity: 1;
         pointer-events: auto;
-        transform: translateY(0);
+        transform: translateY(0) scale(1.18);
       }
       .brand-title {
         transition: opacity 0.5s;
@@ -89,7 +89,13 @@
       font-family: 'Go', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
       line-height:1.6;
       color:var(--ink);
-      background:var(--bg)}
+      background:var(--bg);
+    }
+    @media (max-width: 640px) {
+      body {
+        padding-top: 84px;
+      }
+    }
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
     .container{width:min(1120px,92%);margin-inline:auto}
@@ -111,10 +117,11 @@
       inline-size:60px;
       block-size:60px;
       display:grid;
-      place-items:center;
-      border-radius:16px;
-      box-shadow:inset 0 0 0 2px rgba(255,255,255,.5);
-      transition: inline-size 0.5s, block-size 0.5s, width 0.5s, height 0.5s, transform 0.5s;
+    place-items:center;
+    border-radius:16px;
+    box-shadow:none;
+    border:none;
+    transition: inline-size 0.5s, block-size 0.5s, width 0.5s, height 0.5s, transform 0.5s;
     }
     @media (max-width: 640px) {
       .logo {
@@ -122,10 +129,15 @@
       }
     }
   .brand h1, .brand-title{
-    font-size:1.05rem;
+    font-size:2.1rem;
     line-height:1.1;
     margin:0;
     font-family:'Rimouski', 'Go', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+    font-weight:900;
+    letter-spacing:0.01em;
+  }
+  .brand-title {
+    color: #5b6475 !important;
   }
   /* Responsive nav-cta: hidden on mobile at top, appears on scroll */
   @media (max-width: 640px) {
@@ -146,8 +158,8 @@
     }
     @media (max-width: 640px) {
       .brand-title {
-        font-size: 1.45rem;
-        font-weight: 700;
+        font-size: 2.5rem;
+        font-weight: 900;
         letter-spacing: 0.01em;
         margin-left: 0.1em;
       }
@@ -372,7 +384,7 @@
     <div class="container nav">
       <a class="brand" href="#top" aria-label="SeneX Holdings home">
         <span class="logo" aria-hidden="true">
-          <img src="favicon_io/apple-touch-icon.png" alt="SeneX Holdings logo" width="60" height="60" style="display:block;border-radius:16px;width:60px;height:60px;" />
+          <img src="img/seneX_logo.png" alt="SeneX Holdings logo" width="60" height="60" style="display:block;border-radius:16px;width:60px;height:60px;" />
         </span>
         <h1 class="brand-title">SeneX Holdings</h1>
       </a>
@@ -387,7 +399,7 @@
       </nav>
       <div class="nav-cta">
         <!--<a class="btn btn-outline" href="tel:+94413127312" aria-label="Call SeneX 041 312 7312">Call: 041 312 7312</a>-->
-        <a class="btn btn-primary" href="#contact" href="tel:+94701663146">Get Free Solar Consultation Hotline 070 166 3146</a>
+        <a class="btn btn-primary" href="#contact" href="tel:+94701663146">Get Free Solar Consultation</a>
       </div>
     </div>
   </header>
@@ -417,13 +429,7 @@
   <!-- About -->
   <section id="about" class="container reveal">
     <h3 class="section-title">About SeneX Holdings</h3>
-    <p class="section-sub">SeneX Holdings PVT LTD is a well-established initiative to introduce innovative solutions to make solar
-technology accessible and affordable to all Sri Lankans whilst utilizing the premium quality products in the
-world and adhering to international quality standards in the industry. SeneX Solar Solution is a member
-organization of SeneX Holdings (PVT) LTD, which is a well-established Sri Lankan enterprise specializing in
-wide array of products and services for solar PV system solutions. Our team is strengthened with qualified
-members specialized in electrical, electronic and mechanical fields to cater to our customers the best and
-affordable energy solutions.</p>
+    <p class="section-sub">SeneX Holdings (PVT) LTD, a Sri Lanka–based company specializing in sustainable energy solutions. The company focuses on importing, distributing, designing, and installing residential, commercial, and industrial solar systems across the country. With over a decade of expertise in both grid-tied, off-grid solar installations and wide array of products and services for solar PV system solutions.</p>
     <div class="about">
       <div>
         <ul class="list" aria-label="Key Differentiators">
@@ -613,7 +619,7 @@ affordable energy solutions.</p>
         <h4>Reach Us</h4>
         <p><strong>Head Office:</strong><br> No 32/2, Jambugasmulla Road, Nugegoda</p>
         <p><strong>Branch:</strong><br> No 4, Paramulla Road, Matara</p>
-        <p><a href="tel:+94701663146" class="btn btn-outline">Mobile: 070 166 3146</a></p>
+        <p><a href="tel:+94701663146" class="btn btn-outline">Hotline: 070 166 3146</a></p>
         <p><a class="btn btn-primary" href="mailto:info@senexholdings.com?subject=Solar%20Consultation%20Request">Email: info@senexholdings.com</a></p>
         <p><a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/94701663146?text=Hello%20SeneX%2C%20I%27m%20interested%20in%20a%20free%20solar%20consultation">WhatsApp Chat</a></p>
         <p class="muted">Business Hours: Mon–Sat, 9:00–18:00</p>
@@ -738,8 +744,8 @@ affordable energy solutions.</p>
           navCta.classList.add('show');
           brandTitle.classList.add('hide');
         }
-        // Animate logo size: from 60px to 88px as you scroll from 0 to 60px
-        var minSize = 60, maxSize = 88, scrollStart = 0, scrollEnd = 60;
+        // Animate logo size: from 80px to 120px as you scroll from 0 to 60px
+        var minSize = 80, maxSize = 120, scrollStart = 0, scrollEnd = 60;
         var t = Math.min(1, Math.max(0, (y - scrollStart) / (scrollEnd - scrollStart)));
         var size = minSize + (maxSize - minSize) * t;
         logo.style.inlineSize = size + 'px';
@@ -751,6 +757,8 @@ affordable energy solutions.</p>
         if (img) {
           img.style.width = size + 'px';
           img.style.height = size + 'px';
+          img.style.border = 'none';
+          img.style.boxShadow = 'none';
         }
       }
       window.addEventListener('scroll', onScroll, {passive:true});
