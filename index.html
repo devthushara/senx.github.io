@@ -28,13 +28,13 @@
       .nav-cta {
         opacity: 0;
         pointer-events: none;
-        transform: translateY(-24px) scale(1);
+        transform: translateY(-24px);
         transition: opacity 0.5s, transform 0.5s;
       }
       .nav-cta.show {
         opacity: 1;
         pointer-events: auto;
-        transform: translateY(0) scale(1.18);
+        transform: translateY(0);
       }
       .brand-title {
         transition: opacity 0.5s;
@@ -89,13 +89,7 @@
       font-family: 'Go', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
       line-height:1.6;
       color:var(--ink);
-      background:var(--bg);
-    }
-    @media (max-width: 640px) {
-      body {
-        padding-top: 84px;
-      }
-    }
+      background:var(--bg)}
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
     .container{width:min(1120px,92%);margin-inline:auto}
@@ -117,11 +111,10 @@
       inline-size:60px;
       block-size:60px;
       display:grid;
-    place-items:center;
-    border-radius:16px;
-    box-shadow:none;
-    border:none;
-    transition: inline-size 0.5s, block-size 0.5s, width 0.5s, height 0.5s, transform 0.5s;
+      place-items:center;
+      border-radius:16px;
+      box-shadow:inset 0 0 0 2px rgba(255,255,255,.5);
+      transition: inline-size 0.5s, block-size 0.5s, width 0.5s, height 0.5s, transform 0.5s;
     }
     @media (max-width: 640px) {
       .logo {
@@ -129,12 +122,10 @@
       }
     }
   .brand h1, .brand-title{
-    font-size:2.1rem;
+    font-size:1.5rem;
     line-height:1.1;
     margin:0;
     font-family:'Rimouski', 'Go', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
-    font-weight:900;
-    letter-spacing:0.01em;
   }
   .brand-title {
     color: #5b6475 !important;
@@ -158,8 +149,8 @@
     }
     @media (max-width: 640px) {
       .brand-title {
-        font-size: 2.5rem;
-        font-weight: 900;
+        font-size: 1.45rem;
+        font-weight: 700;
         letter-spacing: 0.01em;
         margin-left: 0.1em;
       }
@@ -384,7 +375,7 @@
     <div class="container nav">
       <a class="brand" href="#top" aria-label="SeneX Holdings home">
         <span class="logo" aria-hidden="true">
-          <img src="img/seneX_logo.png" alt="SeneX Holdings logo" width="60" height="60" style="display:block;border-radius:16px;width:60px;height:60px;" />
+          <img src="img/seneX_logo.png" alt="SeneX Holdings logo" width="60" height="60" style="display:block;border-radius:16px;width:60px;height:60px;border:2px solid transparent;box-shadow:none;" />
         </span>
         <h1 class="brand-title">SeneX Holdings</h1>
       </a>
