@@ -134,6 +134,13 @@
       font-size:1.35rem;
     }
 
+    /* Fix codicon alignment when used with .icon */
+    .icon.codicon {
+      display: grid !important;
+      place-items: center;
+      vertical-align: middle;
+    }
+
     /* Services */
     .cards{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
     .card{grid-column:span 3;background:#fff;border:1px solid rgba(11,18,32,.08);border-radius:18px;padding:1.1rem;transition:transform .2s ease, box-shadow .2s ease}
@@ -150,36 +157,9 @@
     /* Testimonials & Logos */
   .logos{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;align-items:center;opacity:.9}
   .logos-carousel-wrap{margin-top:1.2rem;margin-bottom:1.2rem;}
-  .logos-carousel .logo-box{background:#fff;border:1px solid rgba(11,18,32,.08);border-radius:14px;padding:1rem;text-align:center;min-width:140px;min-height:60px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;}
-  .logos-carousel img{display:block;max-height:40px;max-width:120px;margin:auto;}
-    .logo-box{background:#fff;border:1px solid rgba(11,18,32,.08);border-radius:14px;padding:1rem;text-align:center}
-    /* Testimonials carousel styles */
-    .t-wrap {
-      overflow: hidden;
-      width: 100%;
-      margin: 1.2rem 0;
-      padding: 0;
-    }
-    .t-wrap {
-      display: flex;
-      gap: 2rem;
-      align-items: stretch;
-      will-change: transform;
-    }
-    .testimonial {
-      min-width: 340px;
-      max-width: 400px;
-      flex: 0 0 auto;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      padding: 1.2rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .testimonial{background:#fff;border:1px solid rgba(11,18,32,.08);border-radius:18px;padding:1rem}
-    .quote{font-style:italic}
+  .logos-carousel .logo-box{background:#fff;border:1.4px solid rgba(11,18,32,.08);border-radius:20px;padding:1.4rem;text-align:center;min-width:196px;min-height:84px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;}
+  .logos-carousel img{display:block;max-height:56px;max-width:168px;margin:auto;}
+  .logo-box{background:#fff;border:1.4px solid rgba(11,18,32,.08);border-radius:20px;padding:1.4rem;text-align:center}
 
     /* Calculator */
     .calc {
@@ -339,8 +319,8 @@
         </ul>
       </nav>
       <div class="nav-cta">
-        <a class="btn btn-outline" href="tel:+94413127312" aria-label="Call SeneX 041 312 7312">Call: 041 312 7312</a>
-        <a class="btn btn-primary" href="#contact">Get Free Solar Consultation</a>
+        <!--<a class="btn btn-outline" href="tel:+94413127312" aria-label="Call SeneX 041 312 7312">Call: 041 312 7312</a>-->
+        <a class="btn btn-primary" href="#contact" href="tel:+94701663146">Get Free Solar Consultation Hotline 070 166 3146</a>
       </div>
     </div>
   </header>
@@ -370,7 +350,13 @@
   <!-- About -->
   <section id="about" class="container reveal">
     <h3 class="section-title">About SeneX Holdings</h3>
-    <p class="section-sub">We are a Sri Lankan engineering company delivering premium solar PV solutions for homes, businesses, and industry. Our qualified team of electrical, electronic, and mechanical specialists ensures safe, efficient, and long‑lasting systems.</p>
+    <p class="section-sub">SeneX Holdings PVT LTD is a well-established initiative to introduce innovative solutions to make solar
+technology accessible and affordable to all Sri Lankans whilst utilizing the premium quality products in the
+world and adhering to international quality standards in the industry. SeneX Solar Solution is a member
+organization of SeneX Holdings (PVT) LTD, which is a well-established Sri Lankan enterprise specializing in
+wide array of products and services for solar PV system solutions. Our team is strengthened with qualified
+members specialized in electrical, electronic and mechanical fields to cater to our customers the best and
+affordable energy solutions.</p>
     <div class="about">
       <div>
         <ul class="list" aria-label="Key Differentiators">
@@ -390,7 +376,6 @@
           <li><strong>Government incentives</strong> and net metering guidance.</li>
           <li><strong>Local support</strong> from our Nugegoda HQ and Matara branch.</li>
         </ul>
-        <div class="muted">Registration: PV 00300000 &nbsp;|&nbsp; SEA: SLSEASBS00914</div>
       </div>
     </div>
   </section>
@@ -451,41 +436,23 @@
     </div>
   </section>
 
-  <!-- Testimonials & Clients -->
+  <!-- Partners -->
   <section class="container reveal">
-    <h3 class="section-title">Trusted by Sri Lankans Nationwide</h3>
+    <h3 class="section-title">Our Partners</h3>
     <div class="testimonial-carousel-outer" style="overflow:hidden;width:100%;position:relative;">
-  <div class="testimonial-carousel-inner" id="testimonialCarousel" style="display:flex;gap:1.2rem;align-items:stretch;will-change:transform;">
-        <figure class="testimonial">
-          <blockquote class="quote">“Professional team and seamless installation. Our bills dropped significantly within the first month.”</blockquote>
-          <figcaption>— Residential Customer, Matara</figcaption>
-        </figure>
-        <figure class="testimonial">
-          <blockquote class="quote">“SeneX engineered a robust solution for our factory with minimal downtime. Excellent ongoing support.”</blockquote>
-          <figcaption>— Industrial Client, Gampaha</figcaption>
-        </figure>
-        <figure class="testimonial">
-          <blockquote class="quote">“The SeneX team was knowledgeable and friendly. Highly recommended for solar projects!”</blockquote>
-          <figcaption>— Commercial Client, Colombo</figcaption>
-        </figure>
-        <figure class="testimonial">
-          <blockquote class="quote">“Quick installation and great after-sales support. Our system works flawlessly.”</blockquote>
-          <figcaption>— Homeowner, Kandy</figcaption>
-        </figure>
-        <figure class="testimonial">
-          <blockquote class="quote">“Excellent service and transparent pricing. We are very satisfied with the results.”</blockquote>
-          <figcaption>— Business Owner, Galle</figcaption>
-        </figure>
-      </div>
-    </div>
+    <!-- Our Partners section is now here; testimonials carousel removed -->
       <div class="logos-carousel-wrap" style="overflow:hidden;width:100%;position:relative;">
         <div class="logos-carousel" id="logosCarousel" style="display:flex;gap:2rem;align-items:center;will-change:transform;">
-          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="height:40px;max-width:120px;"></div>
-          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Apple" style="height:40px;max-width:120px;"></div>
-          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png" alt="Google" style="height:40px;max-width:120px;"></div>
-          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" style="height:40px;max-width:120px;"></div>
-          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Amazon" style="height:40px;max-width:120px;"></div>
-          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Meta" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="img/FoxWebsiteColour_1.png" alt="FoxESS" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="img/goodwe-logo.svg" alt="Goodwe" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="img/Huawei_Standard_logo.svg.png" alt="Huawei" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="img/idMEaiILuT_logos.png" alt="idMEaiILuT" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="img/ja.jpeg" alt="JA Solar" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="img/jinko-solar-logo.svg" alt="Jinko Solar" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="img/logo.f95f405.svg" alt="Logo f95f405" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="img/logo.svg" alt="Logo" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="img/solis-logo-v2.png" alt="Solis" style="height:40px;max-width:120px;"></div>
+          <div class="logo-box"><img src="img/trinasolar.png" alt="Trina Solar" style="height:40px;max-width:120px;"></div>
         </div>
       </div>
   </section>
@@ -501,23 +468,13 @@
           <input id="bill" type="number" min="0" step="100" placeholder="e.g., 15,000" required />
         </div>
         <div>
-          <label for="roof">Usable roof area (sq ft)</label>
+          <label for="roof">Usable roof area (sq ft) <span style="color:#eab308">*</span></label>
           <input id="roof" type="number" min="0" step="10" placeholder="e.g., 800" required />
         </div>
         <div>
-          <label for="city">Location</label>
-          <select id="city" required>
-            <option value="colombo">Colombo</option>
-            <option value="kandy">Kandy</option>
-            <option value="galle">Galle</option>
-            <option value="matara">Matara</option>
-            <option value="jaffna">Jaffna</option>
-            <option value="kurunegala">Kurunegala</option>
-          </select>
-        </div>
-        <div>
-          <label for="scheme">Scheme</label>
-          <select id="scheme">
+          <label for="scheme">Scheme <span style="color:#eab308">*</span></label>
+          <select id="scheme" required>
+            <option value="" disabled selected>Select scheme</option>
             <option value="net-metering">Net Metering (offset imports)</option>
             <option value="net-accounting">Net Accounting (sell excess @ FIT)</option>
             <option value="net-plus">Net Plus (sell all @ FIT)</option>
@@ -529,8 +486,8 @@
           <small style="display:block;color:var(--muted);margin-top:.25rem">Default reflects June 2025 rooftop FIT for 5–20 kW. Adjust if your approval differs.</small>
         </div>
         <div>
-          <label for="costkw">System cost (LKR per kW)</label>
-          <input id="costkw" type="number" min="0" step="1000" value="350000" />
+          <label for="targetIncome">Desired monthly income from solar (LKR)</label>
+          <input id="targetIncome" type="number" min="0" step="100" placeholder="e.g., 5,000" />
         </div>
         <div class="row-2">
           <button type="submit" class="btn"><i class="codicon codicon-calculator"></i> Calculate</button>
@@ -589,7 +546,7 @@
         <h4>Reach Us</h4>
         <p><strong>Head Office:</strong><br> No 32/2, Jambugasmulla Road, Nugegoda</p>
         <p><strong>Branch:</strong><br> No 4, Paramulla Road, Matara</p>
-        <p><a href="tel:+94413127312" class="btn btn-outline">Call: 041 312 7312</a> &nbsp; <a href="tel:+94701663146" class="btn btn-outline">Mobile: 070 166 3146</a></p>
+        <p><a href="tel:+94701663146" class="btn btn-outline">Mobile: 070 166 3146</a></p>
         <p><a class="btn btn-primary" href="mailto:info@senexholdings.com?subject=Solar%20Consultation%20Request">Email: info@senexholdings.com</a></p>
         <p><a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/94701663146?text=Hello%20SeneX%2C%20I%27m%20interested%20in%20a%20free%20solar%20consultation">WhatsApp Chat</a></p>
         <p class="muted">Business Hours: Mon–Sat, 9:00–18:00</p>
@@ -769,31 +726,36 @@
     solarForm.addEventListener('submit', function(e) {
       e.preventDefault();
       // Inputs
-      const bill = parseFloat(document.getElementById('bill').value.replace(/[,]/g, '')) || 0;
+      const bill = parseFloat(document.getElementById('bill').value.replace(/[,\u0002]/g, '')) || 0;
       const roof = parseFloat(document.getElementById('roof').value) || 0;
-      const city = document.getElementById('city').value;
       const scheme = document.getElementById('scheme').value;
       const fit = parseFloat(document.getElementById('fit').value) || 0;
-      const costkw = parseFloat(document.getElementById('costkw').value) || 350000;
+      const targetIncome = parseFloat(document.getElementById('targetIncome').value) || 0;
+      const costkw = 140000; // hidden code param
       if (!bill || bill < 1000) {
         alert('Please enter a valid monthly bill (LKR).');
         return;
       }
-      // City irradiance (kWh/kW/month, rough)
-      const cityIrr = {
-        colombo: 130,
-        kandy: 120,
-        galle: 128,
-        matara: 132,
-        jaffna: 135,
-        kurunegala: 125
-      };
-      const irradiance = cityIrr[city] || 128;
+      if (!roof || roof < 100) {
+        alert('Please enter your usable roof area (sq ft).');
+        return;
+      }
+      if (!scheme) {
+        alert('Please select a scheme.');
+        return;
+      }
+      // City irradiance (kWh/kW/month): use average 130 for all
+      const irradiance = 130;
       // System size (kW) needed to offset bill (assume LKR 60/kWh)
       const kwhPerMonth = bill / 60;
       let systemKW = Math.max(1.5, Math.min(20, kwhPerMonth / (irradiance / 30)));
-      // Roof check (1 kW ~ 100 sq ft)
-      const roofRequired = systemKW * 100;
+      // If user wants a target income, adjust system size to meet it (for net-plus)
+      if (targetIncome > 0 && scheme === 'net-plus') {
+        const neededKW = targetIncome / (irradiance * fit);
+        systemKW = Math.max(systemKW, neededKW);
+      }
+      // Roof check (1 kW ~ 80 sq ft)
+      const roofRequired = systemKW * 80;
       panelNote.textContent = roof ? (roof >= roofRequired ? 'Your roof area looks sufficient.' : `You may need ~${Math.ceil(roofRequired - roof)} sq ft more usable area or a split array.`) : 'Tip: Add your roof area for suitability check.';
       // Generation
       const monthlyGen = systemKW * irradiance;
@@ -803,40 +765,67 @@
       let savings = 0, annual = 0, label = '';
       if (scheme === 'net-metering') {
         savings = Math.min(bill, monthlyGen * 60);
-        annual = 0;
+        annual = savings * 12;
         label = 'Offsetting your bill (Net Metering)';
       } else if (scheme === 'net-accounting') {
         const used = Math.min(monthlyGen, kwhPerMonth);
         const exportKWh = Math.max(0, monthlyGen - kwhPerMonth);
         savings = used * 60 + exportKWh * fit;
-        annual = exportKWh * fit * 12;
+        annual = (used * 60 + exportKWh * fit) * 12;
         label = 'Bill offset + export earnings (Net Accounting)';
       } else if (scheme === 'net-plus') {
         savings = monthlyGen * fit;
         annual = savings * 12;
         label = 'All exported at FIT (Net Plus)';
+        if (targetIncome > 0) {
+          label += ` | Target: LKR ${targetIncome.toLocaleString()} /mo`;
+        }
       }
+    // Reset output tiles when any input changes
+    Array.from(document.querySelectorAll('#solarForm input, #solarForm select')).forEach(function(input) {
+      input.addEventListener('input', function() {
+        // Hide results and show banner
+        results.style.display = 'none';
+        document.getElementById('calcBanner').style.display = 'block';
+        // Reset output values
+        sizeKW.textContent = '— kW';
+        genKWh.textContent = '— kWh';
+        savingsLKR.textContent = 'LKR —';
+        annualLKR.textContent = 'LKR —';
+        roiYears.textContent = '— years';
+        co2.textContent = '— tCO₂ ';
+        panelNote.textContent = '';
+        schemeLabel.textContent = '';
+        var treesSaved = document.getElementById('treesSaved');
+        if (treesSaved) treesSaved.textContent = '';
+      });
+    });
       savingsLKR.textContent = 'LKR ' + Math.round(savings).toLocaleString();
       annualLKR.textContent = 'LKR ' + Math.round(annual).toLocaleString();
       schemeLabel.textContent = label;
-      // ROI
-      const capex = systemKW * costkw;
-      const yearly = (scheme === 'net-plus') ? savings * 12 : (savings * 12);
-      const roi = capex && yearly ? (capex / yearly) : 0;
-      roiYears.textContent = roi ? roi.toFixed(1) + ' years' : '—';
+  // ROI
+  const capex = systemKW * costkw;
+  const yearly = annual;
+  const roi = capex && yearly ? (capex / yearly) : 0;
+  roiYears.textContent = roi ? roi.toFixed(1) + ' years' : '—';
       // CO2 offset (0.7 kg/kWh)
       var co2tons = ((monthlyGen * 12 * 0.7) / 1000);
-      co2.textContent = co2tons.toFixed(2) + ' tCO₂ ';
-      // Trees saved (1 tree ≈ 21.77 kg CO₂/year)
-      var trees = Math.round((co2tons * 1000) / 21.77);
-      var treesSaved = document.getElementById('treesSaved');
-      if (treesSaved) {
-        treesSaved.textContent = '(≈ ' + trees + ' trees)';
-      }
+  // Trees saved (1 tree ≈ 21.77 kg CO₂/year)
+  var trees = Math.round((co2tons * 1000) / 21.77);
+  co2.textContent = co2tons.toFixed(2) + ' tCO₂ (≈ ' + trees + ' trees)';
+  var treesSaved = document.getElementById('treesSaved');
+  if (treesSaved) treesSaved.textContent = '';
       // Make CO2 Offset block green (add class)
       var co2Metric = document.getElementById('co2Metric');
       if (co2Metric) {
         co2Metric.classList.add('co2-metric');
+      }
+      // ROI tile theming (yellow/blue)
+      var roiTile = document.getElementById('roiYears').closest('.metric');
+      if (roiTile) {
+        roiTile.style.background = 'linear-gradient(90deg,#fef9c3 0%,#dbeafe 100%)';
+        roiTile.style.border = '1.5px solid #eab308';
+        roiTile.style.color = '#1e293b';
       }
   // Show results
   document.getElementById('calcBanner').style.display = 'none';
