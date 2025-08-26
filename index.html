@@ -546,7 +546,7 @@
         </div>
         <div>
           <label for="fit">Feed‑in tariff (LKR/kWh)</label>
-          <input id="fit" type="number" min="0" step="0.01" value="19.61" />
+          <input id="fit" type="number" min="0" step="0.01" value="20.91" />
           <small style="display:block;color:var(--muted);margin-top:.25rem">Default reflects June 2025 rooftop FIT for 5–20 kW. Adjust if your approval differs.</small>
         </div>
         <div>
@@ -558,9 +558,9 @@
         </div>
       </form>
       <div id="calcBanner" class="calc-banner" aria-live="polite" style="margin-bottom:1.2rem;display:block;text-align:center;background:linear-gradient(90deg,#e0e7ef 0%,#f8fafc 100%);color:var(--blue);padding:1.1rem 1rem;border-radius:12px;font-weight:600;font-size:1.1rem;box-shadow:0 1px 4px 0 rgba(37,99,235,.04);">
-        <span><i class="codicon codicon-sparkle" style="font-size:1.2em;vertical-align:-2px;margin-right:.5em;"></i>Your future savings await here.</span>
+        <span><i class="codicon codicon-sparkle" style="font-size:1.2em;vertical-align:-2px;margin-right:.5em;"></i>Your future savings awaits here.</span>
       </div>
-      <div class="results" style="display:none" id="calcResults" aria-live="polite">
+  <div class="results" style="display:none" id="calcResults" aria-live="polite">
         <div class="metric">
           <div class="title">Estimated System Size</div>
           <div class="value" id="sizeKW">— kW</div>
@@ -598,7 +598,8 @@
           <div class="value" id="co2">— tCO₂ <span id="treesSaved" style="font-size:.95em;color:#059669;font-weight:500;"></span></div>
           <div style="font-size:.8rem;color:#166534">~0.7 kg/kWh avoided; 1 tree ≈ 21.77 kg CO₂/year</div>
         </div>
-      </div>
+  </div>
+  <p id="calcNoteAfter" class="section-sub" style="display:none;margin-top:.4rem;color:#b91c1c;font-weight:700;"><span aria-hidden="true">★</span> Estimate monthly savings, earnings from exporting to CEB, and ROI. Values are indicative; final figures depend on your approved scheme and CEB tariffs.</p>
     </div>
   </section>
 
@@ -616,7 +617,10 @@
         <p class="muted">Business Hours: Mon–Sat, 9:00–18:00</p>
       </div>
       <div class="panel">
-        <form id="contactForm" novalidate>
+        <form id="contactForm" action="https://formspree.io/f/xblajaoq" method="POST" novalidate>
+          <!-- Formspree helpers -->
+          <input type="hidden" name="_subject" value="SeneX Contact Request" />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
           <div class="field">
             <label for="name">Full Name</label>
             <input id="name" name="name" placeholder="Your name" required />
@@ -819,7 +823,7 @@
     // New Solar Calculator
     const solarForm = document.getElementById('solarForm');
     const results = document.getElementById('calcResults');
-    const sizeKW = document.getElementById('sizeKW');
+  const sizeKW = document.getElementById('sizeKW');
     const genKWh = document.getElementById('genKWh');
     const savingsLKR = document.getElementById('savingsLKR');
     const annualLKR = document.getElementById('annualLKR');
@@ -827,7 +831,8 @@
     const co2 = document.getElementById('co2');
     const panelNote = document.getElementById('panelNote');
     const schemeLabel = document.getElementById('schemeLabel');
-    solarForm.addEventListener('submit', function(e) {
+  const calcNoteAfter = document.getElementById('calcNoteAfter');
+  solarForm.addEventListener('submit', function(e) {
       e.preventDefault();
       // Inputs
       const bill = parseFloat(document.getElementById('bill').value.replace(/[,\u0002]/g, '')) || 0;
@@ -888,9 +893,10 @@
     // Reset output tiles when any input changes
     Array.from(document.querySelectorAll('#solarForm input, #solarForm select')).forEach(function(input) {
       input.addEventListener('input', function() {
-        // Hide results and show banner
+  // Hide results and show banner
         results.style.display = 'none';
         document.getElementById('calcBanner').style.display = 'block';
+  if (calcNoteAfter) calcNoteAfter.style.display = 'none';
         // Reset output values
         sizeKW.textContent = '— kW';
         genKWh.textContent = '— kWh';
@@ -934,12 +940,13 @@
   // Show results
   document.getElementById('calcBanner').style.display = 'none';
   results.style.display = 'grid';
+  if (calcNoteAfter) calcNoteAfter.style.display = 'block';
     });
 
-    // Contact form validation (client-side)
+    // Contact form validation + submit to Formspree
     const contactForm = document.getElementById('contactForm');
     const contactNote = document.getElementById('contactNote');
-    contactForm.addEventListener('submit',(e)=>{
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('name');
       const phone = document.getElementById('phone');
@@ -947,17 +954,41 @@
       const message = document.getElementById('message');
 
       let ok = true;
-      [name, phone, email, message].forEach(f=>{ f.classList.remove('err'); if(!f.checkValidity()) ok = false; });
-      if(!ok){
+      [name, phone, email, message].forEach(f => { f.classList.remove('err'); if (!f.checkValidity()) ok = false; });
+      if (!ok) {
         contactNote.textContent = 'Please fill all fields correctly. Phone should be like 07X XXXXXXX.';
         contactNote.style.color = '#b91c1c';
         return;
       }
 
-      // Demo only – replace with real endpoint
-      contactNote.textContent = 'Thanks! Your request has been received. We will contact you shortly.';
-      contactNote.style.color = 'var(--green)';
-      contactForm.reset();
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+      const formData = new FormData(contactForm);
+      formData.append('page', window.location.href);
+      try {
+        const res = await fetch('https://formspree.io/f/xblajaoq', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          contactNote.textContent = 'Thanks! Your request has been received. We will contact you shortly.';
+          contactNote.style.color = 'var(--green)';
+          contactForm.reset();
+        } else {
+          let err = 'Submission failed. Please try again or email info@senexholdings.com.';
+          try { const data = await res.json(); if (data && data.errors) err = data.errors.map(e => e.message).join(', '); } catch {}
+          contactNote.textContent = err;
+          contactNote.style.color = '#b91c1c';
+        }
+      } catch (error) {
+        contactNote.textContent = 'Network error. Please check your connection and try again.';
+        contactNote.style.color = '#b91c1c';
+      } finally {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText || 'Request Free Consultation'; }
+      }
     });
   </script>
 </body>
