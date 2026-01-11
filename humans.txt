@@ -1,0 +1,30 @@
+# humans.txt
+# The humans responsible for the website
+
+/* TEAM */
+  Company: SeneX Holdings (PVT) LTD
+  Site: https://www.senexholdings.com
+  Contact: info@senexholdings.com
+  Location: Nugegoda, Sri Lanka
+
+/* THANKS */
+  Partners: FoxESS, GoodWe, Huawei, JA Solar, Jinko Solar, Solis, Trina Solar
+  
+/* SITE */
+  Last update: 2026/01/11
+  Language: English
+  Doctype: HTML5
+  Standards: HTML5, CSS3, Semantic Web
+  Components: Google Analytics, Formspree, Google Maps
+  Software: VS Code, Git
+  
+/* BUSINESS */
+  Industry: Renewable Energy / Solar Power
+  Services: Solar Panel Installation, Design, Maintenance
+  Coverage: Sri Lanka (All Provinces)
+  Established: 2014
+  
+/* SEO */
+  Focus Keywords: solar panels Sri Lanka, solar installation, renewable energy
+  Target Audience: Homeowners, Businesses, Industries
+  Language Optimization: English (Primary), Sinhala, Tamil

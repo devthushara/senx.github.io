@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Main homepage -->
+  <url>
+    <loc>https://www.senexholdings.com/</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    
+    <!-- Image entries for SEO -->
+    <image:image>
+      <image:loc>https://www.senexholdings.com/img/hero-install.jpg</image:loc>
+      <image:title>Solar Panel Installation in Sri Lanka</image:title>
+      <image:caption>Professional solar panel installation by SeneX Holdings</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://www.senexholdings.com/img/roof-panels.jpg</image:loc>
+      <image:title>Rooftop Solar Panels Sri Lanka</image:title>
+      <image:caption>Commercial rooftop solar installation</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://www.senexholdings.com/og-image.jpg</image:loc>
+      <image:title>SeneX Holdings Solar Energy Solutions</image:title>
+      <image:caption>Leading solar energy provider in Sri Lanka</image:caption>
+    </image:image>
+  </url>
+  
+</urlset>
